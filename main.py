@@ -31,6 +31,7 @@ def choix():
     Perso = []
     Perso.append(Personnage1)
     Perso.append(Personnage2)
+    
 def tour(PersoList):
      Perso1 = PersoList[0]
      Perso2 = PersoList[1]

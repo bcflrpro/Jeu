@@ -1,42 +1,63 @@
 from Perso.Personnage import Personnage
+from Perso.Boss import Boss
 
 
 def main():
-    print('Choix Personnage :')
-    PersoList = choix()
-    tour(PersoList)
-    return ;
+    print('Debut du Jeux :')
 
-def choix():
-    value = input(" Personnage 1 (Mage =1 Guerrier =2 Healeur =3)")
-    if value == 1 :
-        Personnage1  = Personnage()
-        Personnage1  = Personnage.Mage()
-    if value == 2:
-        Personnage1  = Personnage()
-        Personnage1  = Personnage.Guerrier()
-    if value == 3:
-        Personnage1  = Personnage()
-        Personnage1  = Personnage.Healeur()
-    value = input(" Personnage 2 (Mage =1 Guerrier =2 Healeur =3)")
-    if value == 1 :
-        Personnage2  = Personnage()
-        Personnage2  = Personnage.Mage()
-    if value == 2:
-        Personnage2  = Personnage()
-        Personnage2  = Personnage.Guerrier()
-    if value == 3:
-        Personnage2  = Personnage()
-        Personnage2  = Personnage.Healeur()
-    Perso = []
-    Perso.append(Personnage1)
-    Perso.append(Personnage2)
-    
-def tour(PersoList):
-     Perso1 = PersoList[0]
-     Perso2 = PersoList[1]
-     Win=False;
-     PersoWin =""
-     while Win == False:
-         return;
+    Perso = Personnage();
+    MonsterBoss = Boss();
+    tour(MonsterBoss,Perso)
 
+
+def tour(MonsterBoss,Perso):
+    Win = False;
+    PersoWin = ""
+    DamageDeal = 0
+    while Win == False:
+        if (MonsterBoss.CurrentCD == 0):
+            print('Perso protect :')
+            Perso.Protect()
+        else:
+            if (Perso.HP <= Perso.MaxHP / 2):
+                print('Perso heal :')
+                Perso.Heal()
+            else:
+                print('Perso Attack :')
+                DamageDeal = Perso.Attack()
+                MonsterBoss.HP = MonsterBoss.HP - DamageDeal
+
+
+        if (MonsterBoss.HP <= 0):
+            Win = True
+            print('Victoire Personnage :')
+
+            PersoWin = "Personnage"
+
+        if (MonsterBoss.CurrentCD == 1):
+            print("une attaque se prepare")
+        if (MonsterBoss.CurrentCD == 0):
+            print('MonsterBoss SpéATK :')
+            if(Perso.used ==True):
+                print("Protection efficace")
+            else:
+                DamageDeal = MonsterBoss.speAttack()
+                MonsterBoss.CurrentCD = MonsterBoss.SpeCD
+                Perso.HP = Perso.HP- DamageDeal
+
+        else:
+            print('MonsterBoss ATK :')
+            DamageDeal = MonsterBoss.Attack()
+            Perso.HP = Perso.HP- DamageDeal
+        if (Perso.HP <= 0):
+            Win = True
+            print('Victoire du MonsterBoss :')
+
+            PersoWin = "MonsterBoss"
+        MonsterBoss.CurrentCD  =  MonsterBoss.CurrentCD -1
+        if(MonsterBoss.HP  <=50):
+            MonsterBoss.HP  =  MonsterBoss.HP + 1
+        print(MonsterBoss.HP)
+        print(Perso.HP)
+
+main()

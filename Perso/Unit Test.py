@@ -30,6 +30,14 @@ class MyTestCase(unittest.TestCase):
 
         self.assertEqual(DamageDeal== 15 )
 
+    def test_Protect_Perso(self):
+        Perso = Personnage()
+        IsUsed = Perso.Protect()
+        if(IsUsed == True):
+            self.assertEqual(IsUsed==False)
+        if(IsUsed== False):
+            self.assertEqual(IsUsed==False)
+
 
 
 

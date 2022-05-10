@@ -26,3 +26,5 @@ class Personnage:
         RNG = random.randint(0,2)
         if(RNG == 0):
             self.used =True;
+        else:
+            self.used = False

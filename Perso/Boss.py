@@ -16,3 +16,7 @@ class Boss:
 
     def Attack(self):
         return self.attack
+    def BossDead(self):
+        if(self.HP <= 0):
+            self.HP = 0
+            return True

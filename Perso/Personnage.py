@@ -2,8 +2,6 @@ import random
 
 class Personnage:
 
-
-
     def __init__(self):
         self.attack =10;
         self.HP =50;

@@ -1,35 +1,30 @@
+import random
+
 class Personnage:
 
-    def init(this):
-        this.attack = 0;
-        this.armor = 0;
-        this.SpeAttack = "Tank 50% "
-        this.SpéCD = 0;
-        this.CurrentCD = 0;
-        this.used = False;
-        return;
-    def guerrier(this):
-        this.attack =5;
-        this.armor = 4;
-        this.SpeAttack ="Tank 50% "
-        this.SpéCD =2;
-        this.CurrentCD =2;
-        this.used=False;
 
-    def mage(this):
-        this.attack = 5;
-        this.armor = 2;
-        this.SpeAttack ="retire 50% hp manquant"
-        this.SpéCD =2;
-        this.CurrentCD =2;
 
-        this.used=False;
-    
-    def healeur(this):
-        this.armor = 1;
-        this.attack = 2;
-        this.SpéCD =2;
+    def __init__(self):
+        self.attack =10;
+        self.HP =50;
+        self.MaxHP =50;
 
-        this.CurrentCD =2;
-        this.used=False;
-        this.SpeAttack ="heal 15hp"
+        self.armor = 4;
+        self.SpéCD =2;
+        self.CurrentCD =0;
+        self.used=False;
+
+
+
+    def Attack(self):
+        return self.attack;
+
+    def Heal(self):
+        RNG = random.randint(0, 2)
+        if (RNG == 0):
+          self.HP =  self.HP + self.MaxHP/2;
+
+    def Protect(self):
+        RNG = random.randint(0,2)
+        if(RNG == 0):
+            self.used =True;

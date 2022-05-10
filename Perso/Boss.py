@@ -20,3 +20,5 @@ class Boss:
         if(self.HP <= 0):
             self.HP = 0
             return True
+        else:
+            return False

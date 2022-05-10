@@ -39,10 +39,15 @@ class MyTestCase(unittest.TestCase):
         if(IsUsed== False):
             self.assertEqual(IsUsed==False)
 
-    def test_Attack_Boss(self):
+    def test_Dead_Boss(self):
         MonsterBoss = Boss()
         Boss.HP = 0
         self.assertTrue(Boss.BossDead())
+
+        def test_Dead_Boss(self):
+            MonsterBoss = Boss()
+            Boss.HP = 100
+            self.assertFalse(Boss.BossDead())
 
 
 

@@ -28,10 +28,9 @@ def tour(MonsterBoss,Perso):
                 MonsterBoss.HP = MonsterBoss.HP - DamageDeal
 
 
-        if (MonsterBoss.HP <= 0):
+        if (MonsterBoss.BossDead() == True):
             Win = True
-            print('Victoire Personnage :')
-
+            print('Victoire du Personnage :')
             PersoWin = "Personnage"
 
         if (MonsterBoss.CurrentCD == 1):
